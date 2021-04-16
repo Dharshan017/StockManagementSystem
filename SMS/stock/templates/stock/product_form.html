@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block body_block %}
+<form style="margin: 10px;" method="POST">
+{% bootstrap_form form %}
+{% csrf_token %}
+<input type="submit" class="btn btn-primary btn-large" value="Update">
+</form>
+{% endblock body_block %}
+    

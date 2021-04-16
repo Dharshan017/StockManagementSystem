@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block body_block %}
+<div class="container-fluid" style="text-align: center;font-size: large;background-color:lightslategray;padding: 25px;margin: 25px;border-radius: 25px;" >
+    {% if object_list.count == 0 %}
+        <p>No Orders Available</p> 
+    {% else %}
+    {% for ord in object_list %}
+    <div class="card" style="background-color: floralwhite;margin: 10px;padding: 10px;border-top-left-radius: 25px;border-bottom-right-radius: 25px;">
+        <div class="row no-gutters">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <p class="card-text">{{ord}}</p>
+                </div>  
+            </div>
+            <div class="col-md-4">
+                    <a style="margin-right: 10px;" href="{% url 'stock:order_detail' pk=ord.pk %}" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+                    </a>
+            </div>
+        </div>
+      </div>
+      <br>
+      {% endfor %}
+      {% endif %}
+      <div class="AddBtn d-flex align-items-end">
+        <a class="btn btn-primary"  style="color:cornsilk;" href="{% url 'stock:create_order' %}">
+            Add Orders <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </a>
+  </div>
+</div>    
+{% endblock body_block %}
+    
+

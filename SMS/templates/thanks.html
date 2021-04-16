@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block body_block %}
+<div style="height: 500px;text-align: center;">
+    <h1>
+    </h1>
+    <div class="alert alert-danger"  role="alert">
+        <h4 class="alert-heading">Thanks for Visiting Our Site!</h4>
+        <hr>
+        <p>
+            You are now Logged Out!
+        </p>
+        <br>
+        <a class="btn btn-primary"  href="{% url 'accounts:login' %}">
+            Login 
+        </a>
+    </div>
+</div>
+{% endblock %}

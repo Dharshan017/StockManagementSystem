@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block body_block %}
+<div style="text-align: center;height: 250px;padding: 50px;">
+  <h2>Sign up for a free account</h2>
+  <p class="lead">Select below the type of account you want to create</p>
+  <a href="{% url 'accounts:create_admin' %}" class="btn btn-primary btn-lg" role="button">
+    I'm an Admin
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+  </a>
+  <a href="{% url 'accounts:create_manager' %}" style="margin-left: 10px;" class="btn btn-warning btn-lg" role="button">
+    I'm a Manager
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+  </a>
+</div>
+{% endblock %}

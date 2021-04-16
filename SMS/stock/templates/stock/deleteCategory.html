@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block body_block %}
+<div class="container" style="font-size: large;" >
+<form method="POST">
+    {% csrf_token %}
+    <p>Are you Sure want to Delete "{{ object }}"?</p>
+    <a class="btn btn-warning"  href="{% url 'stock:list_category' %}">
+        Cancel Delete <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+    </a>
+    <input type="submit" value="Confirm Delete" class="btn btn-danger btn-large">
+</form>
+</div>    
+{% endblock body_block %}
+
+

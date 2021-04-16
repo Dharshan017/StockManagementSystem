@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block body_block %}
+<div style="height: 500px;text-align: center;">
+    <div class="alert alert-success"  role="alert">
+        <h4 class="alert-heading">Welcome {{user.username}}!</h4>
+        <p>
+            You are now Logged In as
+            {% if user.is_admin %}
+                Admin!
+            {% else %}
+                Manager!
+            {% endif %}
+        </p>
+        <hr>
+        <p class="mb-0">
+            You have all the Previleges That
+            {% if user.is_admin %}
+                An Admin has.
+            {% else %}
+                A Manager has.
+            {% endif %}
+                
+        </p>
+        <br>
+        <a class="btn btn-primary"  href="{% url 'home' %}">
+            Home Page <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+        </a>
+      </div>
+</div>
+{% endblock %}

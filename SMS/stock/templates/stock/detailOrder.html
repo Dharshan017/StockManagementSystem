@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% block body_block %}
+<div class="card" style="margin-left: 20%;padding: 25px;width: 60%;border-radius: 25px;">
+    <div class="row">
+        <div class="col-md-6" style="text-align: center;">
+            <p style="font-weight: bold;">Product </p> 
+        </div>
+        <div class="col-md-6">{{ object.OrderedProduct }}</div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-6" style="text-align: center;">
+            <p style="font-weight: bold;">Quantity </p> 
+        </div>
+        <div class="col-md-6">{{ object.OrderedQuantity }}</div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-6" style="text-align: center;">
+            <p style="font-weight: bold;">Customer </p>
+        </div>
+        <div class="col-md-6"> {{ object.OrderedCustomer }}</div> 
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-6" style="text-align: center;">
+            <p style="font-weight: bold;">Date </p>
+        </div>
+        <div class="col-md-6">  {{ object.OrderedDate }} </div> 
+    </div>
+    <hr>
+    <div>
+        <a style="margin-left: 280px;" class="btn btn-warning"  href="{% url 'stock:list_order' %}">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            Back To Orders 
+        </a>
+    </div>
+</div>
+{% endblock body_block %}
+    
