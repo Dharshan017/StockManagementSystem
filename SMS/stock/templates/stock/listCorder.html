@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
-
-
+{% load django_bootstrap5 %}
 {% block body_block %}
-<div class="container-fluid" style="text-align: center;font-size: large;background-color:lightslategray;padding: 25px;margin: 25px;border-radius: 25px;" >
-    {% if object_list.count == 0 %}
+<form action="{% url 'stock:list_corder' %}" method="POST">
+    {% bootstrap_form form %}
+    {% csrf_token %}
+    <br>
+    <input class="btn btn-primary btn-large" type="submit" value="Search">
+</form>
+<hr>
+<div class="container-fluid" style="text-align: center;font-size: large;background-color:lightslategray;padding: 25px;margin: 25px;border-radius: 25px;" >    
+    {% if order_list.count == 0 %}
         <p>No Orders Available</p> 
     {% else %}
-    {% for ord in object_list %}
+    {% for ord in order_list %}
     <div class="card" style="background-color: floralwhite;margin: 10px;padding: 10px;border-top-left-radius: 25px;border-bottom-right-radius: 25px;">
         <div class="row no-gutters">
             <div class="col-md-8">
@@ -25,11 +31,8 @@
       {% endfor %}
       {% endif %}
       <div class="AddBtn d-flex align-items-end">
-        <a class="btn btn-primary"  style="color:cornsilk;" href="{% url 'stock:create_order' %}">
-            Add Orders <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        </a>
-        <a class="btn btn-primary"  style="margin-left: 25px;color:cornsilk;" href="{% url 'stock:list_corder' %}">
-            Filter Orders <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
+        <a class="btn btn-primary"  style="color:cornsilk;" href="{% url 'stock:list_order' %}">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back To Orders
         </a>
   </div>
 </div>    

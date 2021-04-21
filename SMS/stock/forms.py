@@ -32,3 +32,7 @@ class OrderCreateForm(forms.ModelForm):
             order.save()
         return order
         
+
+class OrderFilter(forms.Form):
+    StartingDate = forms.DateTimeField(widget=forms.DateInput(attrs={'placeholder':'mm/dd/yyyy'}))
+    EndingDate = forms.DateTimeField(widget=forms.DateInput(attrs={'placeholder':'mm/dd/yyyy'}))

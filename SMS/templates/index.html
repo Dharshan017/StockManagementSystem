@@ -1,5 +1,28 @@
 {% extends 'base.html' %}
 
 {% block body_block %}
-
+<!-- <div class="container-fluid">
+<img src="https://cdn.pixabay.com/photo/2016/05/17/15/54/banner-1398363_1280.jpg" alt="Stock!">
+</div> -->
+<div class="container-fluid" style="background-size: 100%;background-repeat: no-repeat; background-image: url('https://cdn.pixabay.com/photo/2016/05/17/15/54/banner-1398363_1280.jpg');">
+<br><br><br>
+<div class="card" style="border-radius: 25px;padding: 20px;font-family: Georgia, 'Times New Roman', Times, serif;text-align: center;width: 39%;margin-left: 60%;">
+<div class="card-header">
+    <p>
+        Welcome To the Stock Management System!
+    </p>
+</div>  
+<div class="card-body">
+    <p>
+        Here , An Admin of a Store can <br> Add Brand, Category, and Products <br> Available in his Store! <br>
+        And A Manager Can Place Orders <br> to his Customers with Available Products! <br><br> 
+        If you haven't open your Account Yet?<br><br>
+        <a class="btn btn-primary" href="{% url 'accounts:signup' %}">
+            SignUp
+        </a>
+    </p>
+</div>
+</div>
+<br><br>
+</div>
 {% endblock %}

@@ -1,14 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 # Create your views here.
 from django.views.generic import CreateView,ListView,UpdateView,DeleteView,DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy,reverse
 from django.contrib import messages
 from django.utils.decorators import method_decorator
 from .models import Brand,Category,Product,Order
 from .decorators import admin_required,manager_required
-from .forms import OrderCreateForm
+from .forms import OrderCreateForm,OrderFilter
+import pytz
 
 @method_decorator(admin_required,name='dispatch')
 class BrandCreateView(CreateView,LoginRequiredMixin):
@@ -109,3 +111,19 @@ class OrderListView(ListView):
 class OrderDetailView(DetailView):
     model = Order
     template_name = "stock/detailOrder.html"
+
+
+
+@login_required
+def OrderFilterView(request):
+    if request.method == 'POST':
+        form = OrderFilter(request.POST)
+        if form.is_valid():
+            sdate = form.cleaned_data['StartingDate']
+            edate = form.cleaned_data['EndingDate']
+            orders = Order.objects.filter(OrderedDate__lt=edate).filter(OrderedDate__gt=sdate) 
+            return render(request,'stock/listCorder.html',{'form':form,'order_list':orders})
+    else:
+        form = OrderFilter()
+    return render(request,'stock/listCorder.html',{'form':form})
+
